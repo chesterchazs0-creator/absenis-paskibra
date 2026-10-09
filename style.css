@@ -1,18 +1,18 @@
 :root {
-    --paskibra-red: #CE1126;       /* Merah Bendera */
-    --paskibra-white: #FFFFFF;     /* Putih PDU */
-    --paskibra-gold: #E5A93B;      /* Emas Lencana */
-    --paskibra-dark: #1A1A1A;      /* Hitam Peci */
-    --bg-light: #F8F9FA;           
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    --border-radius: 8px;
+    --paskibra-red: rgb(5, 5, 44);       
+    --paskibra-white: #f2efef;     
+    --paskibra-gold: #f4b806;      
+    --paskibra-dark: #1A1A1A;      
+    --bg-light: #F3F4F6;           
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --border-radius: 12px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -24,35 +24,77 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, var(--paskibra-red) 0%, #A00D1E 100%);
+    background: linear-gradient(135deg, var(--paskibra-red) 0%, #900A15 100%);
     color: var(--paskibra-white);
-    padding: 25px 20px;
+    padding: 35px 20px;
     text-align: center;
     border-bottom: 5px solid var(--paskibra-gold); 
     box-shadow: var(--shadow);
 }
 
 header h1 {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 5px;
 }
 
 header p {
     font-size: 14px;
-    opacity: 0.9;
-    font-style: italic;
+    opacity: 0.85;
+    margin-top: 5px;
 }
+
+/* Desain Dasbor Grid Persentase */
+.dashboard-stats {
+    max-width: 1160px;
+    width: 100%;
+    margin: 25px auto 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--paskibra-white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+.sub-count {
+    font-size: 12px;
+    color: #888;
+}
+
+.card-hadir { border-left: 5px solid #137333; color: #137333; }
+.card-izin { border-left: 5px solid #090500; color: #070401; }
+.card-sakit { border-left: 5px solid #C5221F; color: #C5221F; }
 
 .container {
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 25px auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 30px;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 25px;
     width: 100%;
     flex: 1;
 }
@@ -61,52 +103,59 @@ header p {
     background: var(--paskibra-white);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    border-top: 4px solid var(--paskibra-red); 
-    padding: 25px;
+    padding: 30px;
     height: fit-content;
 }
 
 .card-title {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 20px;
-    color: var(--paskibra-dark);
-    border-bottom: 2px solid #EAEAEA;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #F0F0F0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.form-group {
-    margin-bottom: 18px;
+/* Wrapper Fitur Pencarian Nama */
+.search-wrapper {
+    margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    background-color: #FAFAFA;
+    transition: all 0.3s;
 }
 
-.form-group input[type="text"],
-.form-group select,
-.form-group textarea {
+.search-wrapper input:focus {
+    border-color: var(--paskibra-red);
+    background-color: var(--paskibra-white);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(206, 17, 38, 0.1);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+
+.form-group input, .form-group select, .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1.5px solid #CCCCCC;
-    border-radius: var(--border-radius);
+    border: 1.5px solid #E0E0E0;
+    border-radius: 8px;
     font-size: 14px;
     background-color: #FAFAFA;
 }
 
-.form-group input[type="text"]:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--paskibra-red);
     background-color: var(--paskibra-white);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(206, 17, 38, 0.15);
 }
 
 .btn-submit {
@@ -114,113 +163,61 @@ header p {
     background-color: var(--paskibra-red);
     color: var(--paskibra-white);
     border: none;
-    padding: 14px;
+    padding: 15px;
     font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(206, 17, 38, 0.2);
+    transition: background 0.2s;
 }
 
-.btn-submit:hover {
-    background-color: #A00D1E;
-}
+.btn-submit:hover { background-color: #900A15; }
 
-.btn-refresh {
-    background: none;
-    border: none;
-    color: var(--paskibra-red);
-    cursor: pointer;
-    padding: 5px;
-}
+.btn-refresh { background: none; border: none; color: var(--paskibra-red); cursor: pointer; }
+.btn-refresh svg { transition: transform 0.4s ease; }
+.btn-refresh.rotating svg { transform: rotate(360deg); }
 
-.btn-refresh svg {
-    transition: transform 0.4s ease;
-}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background-color: var(--paskibra-dark); color: var(--paskibra-white); padding: 12px; font-weight: 600; text-transform: uppercase; font-size: 12px; }
+td { padding: 14px 12px; border-bottom: 1px solid #F0F0F0; }
 
-.btn-refresh.rotating svg {
-    transform: rotate(360deg);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    text-align: left;
-}
-
-th {
-    background-color: var(--paskibra-dark); 
-    color: var(--paskibra-white);
-    padding: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-td {
-    padding: 14px 12px;
-    border-bottom: 1px solid #EAEAEA;
-}
-
-.badge {
-    display: inline-block;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-
+.badge { display: inline-block; padding: 4px 10px; font-size: 11px; font-weight: 700; border-radius: 20px; text-transform: uppercase; }
 .badge.hadir { background-color: #E6F4EA; color: #137333; }
 .badge.izin { background-color: #FEF7E0; color: #B06000; }
 .badge.sakit { background-color: #FCE8E6; color: #C5221F; }
 
-.btn-delete-row {
-    background: none;
-    border: none;
-    color: #DC3545; 
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+.btn-delete-row { background: none; border: none; color: #DC3545; cursor: pointer; }
+.btn-delete-row:hover { color: #900A15; transform: scale(1.1); }
 
-.btn-delete-row:hover {
-    color: #A00D1E;
-    transform: scale(1.15);
-}
-
-.status-message {
-    padding: 12px;
-    border-radius: var(--border-radius);
-    margin-top: 15px;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: center;
-}
-
+.status-message { padding: 12px; border-radius: 8px; margin-top: 15px; font-size: 13px; font-weight: 600; text-align: center; }
 .status-message.success { background-color: #D4EDDA; color: #155724; }
-.status-message.error { background-color: #F8D7DA; color: #721C24; }
 .hidden { display: none !important; }
 
-.spinner {
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top: 3px solid var(--paskibra-white);
-    width: 20px;
-    height: 20px;
-    margin: 0 auto;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+.spinner { border: 3px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top: 3px solid var(--paskibra-white); width: 20px; height: 20px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 @media (max-width: 768px) {
-    .container { grid-template-columns: 1fr; gap: 20px; }
+    .dashboard-stats { grid-template-columns: 1fr; }
+    .container { grid-template-columns: 1fr; }
+}
+
+/* Desain Tombol Sesi Baru (Reset Layar) */
+.btn-reset-view {
+    background-color: #6C757D; /* Warna abu-abu netral elegan */
+    color: var(--paskibra-white);
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+.btn-reset-view:hover {
+    background-color: #5A6268;
 }
