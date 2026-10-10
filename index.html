@@ -3,136 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Kas Paskibra - Arunika Bumantara</title>
+    <title>Presensi Paskibra Real-Time</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Premium Modern -->
+    <!-- Header Aplikasi -->
     <header>
-        <div class="header-logo">
-            <svg width="32" height="32" fill="var(--gold-premium)" viewBox="0 0 16 16">
+        <h1>
+            <svg width="24" height="24" fill="var(--paskibra-gold)" viewBox="0 0 16 16" style="display:inline-block; vertical-align:-3px; margin-right:10px;">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-            </svg>
-        </div>
-        <h1>ARUNIKA BUMANTARA</h1>
-        <p>Lubna bendahara & Keuangan Korps Paskibra</p>
+            </svg>ARUNIKA BUMANTARA
+        </h1>
+        <p>Sistem Informasi Absensi Latihan Rutin & Kegiatan Paskibra</p>
     </header>
 
-    <!-- Dasbor Kartu Saldo Berbentuk Neumorphic Modern -->
+    <!-- BARU: Panel Grid Dasbor Persentase Kehadiran -->
     <div class="dashboard-stats">
-        <div class="stat-card card-masuk">
-            <div class="card-icon-wrapper">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm10.5-.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
-                </svg>
-            </div>
-            <div class="card-info">
-                <h3>Total Pemasukan</h3>
-                <p id="totalMasuk">Rp 0</p>
-            </div>
+        <div class="stat-card card-hadir">
+            <h3>Hadir</h3>
+            <p id="percentHadir">0%</p>
+            <span id="countHadir" class="sub-count">0 Anggota</span>
         </div>
-        
-        <div class="stat-card card-keluar">
-            <div class="card-icon-wrapper">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm4.5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L11.293 7.5H5.5z"/>
-                </svg>
-            </div>
-            <div class="card-info">
-                <h3>Total Pengeluaran</h3>
-                <p id="totalKeluar">Rp 0</p>
-            </div>
+        <div class="stat-card card-izin">
+            <h3>Izin</h3>
+            <p id="percentIzin">0%</p>
+            <span id="countIzin" class="sub-count">0 Anggota</span>
         </div>
-
-        <div class="stat-card card-saldo">
-            <div class="card-icon-wrapper">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm0 1h13a.5.5 0 0 1 .5.5v1.5H0V3.5a.5.5 0 0 1 .5-.5zm13 5.5v4.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-4.5h14z"/>
-                </svg>
-            </div>
-            <div class="card-info">
-                <h3>Sisa Saldo Kas</h3>
-                <p id="totalSaldo">Rp 0</p>
-            </div>
+        <div class="stat-card card-sakit">
+            <h3>Sakit</h3>
+            <p id="percentSakit">0%</p>
+            <span id="countSakit" class="sub-count">0 Anggota</span>
         </div>
     </div>
 
-    <!-- Kontainer Utama Grid Split-Screen -->
+    <!-- Kontainer Utama -->
     <div class="container">
         
-        <!-- KOLOM KIRI: Form Input Glassmorphism -->
-        <div class="glass-card">
-            <div class="card-header-title">
-                <h2>Catat Kas Baru</h2>
+        <!-- KOLOM KIRI: Form Input -->
+        <div class="card-box">
+            <div class="card-title">
+                <span>Isi Presensi</span>
             </div>
             
-            <form id="cashForm">
-                <div class="form-group-modern">
-                    <input type="text" id="nama" name="nama" required placeholder=" ">
-                    <label for="nama">Nama Anggota / Keperluan</label>
+            <form id="attendanceForm">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required autocomplete="off">
                 </div>
 
-                <div class="form-group-modern">
-                    <input type="text" id="kelas" name="kelas" required placeholder=" ">
+                <div class="form-group">
                     <label for="kelas">Kelas</label>
+                    <input type="text" id="kelas" name="kelas" placeholder="Contioh: 71, 82, 91" required autocomplete="off">
                 </div>
 
-                <div class="form-group-select">
-                    <label>Jenis Transaksi</label>
-                    <select id="jenis" name="jenis" required>
-                        <option value="Pemasukan">Pemasukan (Uang Masuk)</option>
-                        <option value="Pengeluaran">Pengeluaran (Uang Keluar)</option>
+                <div class="form-group">
+                    <label for="status">Status Kehadiran</label>
+                    <select id="status" name="status" required>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Izin">Izin</option>
+                        <option value="Sakit">Sakit</option>
                     </select>
                 </div>
 
-                <div class="form-group-modern">
-                    <input type="number" id="jumlah" name="jumlah" required placeholder=" ">
-                    <label for="jumlah">Nominal Uang (Rp)</label>
+                <div class="form-group">
+                    <label for="keterangan">Keterangan (Opsional)</label>
+                    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Alasan jika izin/sakit, atau beri tanda (-) jika hadir"></textarea>
                 </div>
 
-                <div class="form-group-modern">
-                    <textarea id="keterangan" name="keterangan" required placeholder=" " rows="2"></textarea>
-                    <label for="keterangan">Keterangan Catatan</label>
-                </div>
-
-                <button type="submit" id="btnSubmit" class="btn-modern-submit">
-                    <span id="btnText">Simpan Transaksi</span>
+                <button type="submit" id="btnSubmit" class="btn-submit">
+                    <span id="btnText">Kirim Ke kang fauzi</span>
                     <div id="spinner" class="spinner hidden"></div>
                 </button>
             </form>
             <div id="statusMessage" class="status-message hidden"></div>
         </div>
 
-        <!-- KOLOM KANAN: Jurnal Keuangan Premium -->
-        <div class="glass-card">
-            <div class="card-header-title">
-                <h2>Jurnal Finansial</h2>
-                <button type="button" id="btnRefresh" class="btn-icon-refresh" title="Segarkan Data">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                    </svg>
-                </button>
-            </div>
+        <!-- KOLOM KANAN: Tabel Riwayat + Fitur Cari Nama -->
+        <div class="card-box">
+            <!-- Cari kode <div class="card-title"> di sebelah kanan index.html Anda, lalu ganti menjadi: -->
+<div class="card-title">
+    <span>Daftar Hadir Hari Ini</span>
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <!-- BARU: Tombol Reset Tampilan Layar -->
+        <button type="button" id="btnResetTable" class="btn-reset-view" title="Mulai Sesi Baru / Reset Tampilan">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+            </svg> Sesi Baru
+        </button>
+        
+        <button type="button" id="btnRefresh" class="btn-refresh" title="Segarkan Data">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+            </svg>
+        </button>
+    </div>
+</div>
 
-            <div class="search-box-modern">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="searchName" placeholder="Cari nama atau riwayat jurnal...">
+
+            <!-- BARU: Kotak Input Filter Pencarian Nama -->
+            <div class="search-wrapper">
+                <input type="text" id="searchName" placeholder="🔍 Cari nama anggota..." autocomplete="off">
             </div>
             
-            <div class="table-container-modern">
+            <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Keterangan Deskripsi</th>
-                            <th style="width: 25%; text-align: center;">Tipe</th>
-                            <th style="width: 30%; text-align: right;">Jumlah Nominal</th>
-                            <th style="width: 10%;"></th>
+                            <th style="width: 15%;">Waktu</th>
+                            <th style="width: 45%;">Nama Anggota</th>
+                            <th style="width: 20%;">Kelas</th>
+                            <th style="width: 15%;">Status</th>
+                            <th style="width: 5%;"></th> 
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <tr><td colspan="4" class="text-center-muted">Menyinkronkan data keuangan...</td></tr>
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">Memuat data presensi...</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
